@@ -1,0 +1,5 @@
+int numero = 12;
+boolean alert;
+numero = 2412;
+sero++;
+nuero--;

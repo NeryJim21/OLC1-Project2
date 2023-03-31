@@ -1,0 +1,88 @@
+Documento para comprender la estructura de la gramática para TypeWise
+
+Lenguaje:
+
+Comentarios
+    unilínea: //hola
+    multilínea /* hola */
+
+PALABRAS RESERVADAS
+    int
+    double
+    boolean
+    char
+    string
+
+    new
+    list
+    add
+    
+    if
+    else
+    switch
+    case
+    default
+    break
+    
+    while
+    for
+    do
+    continue
+
+    return
+    void
+    
+    print
+    toLower
+    toUpper
+    length
+    truncate
+    round
+    typeof
+    toString
+    toCharArray
+    
+    main
+
+
+SIMBOLOS
+    \n
+    \\
+    \"
+    \t
+    \'
+
+    + (suma)
+    - (resta)
+    * (multiplicación)
+    / (división)
+    ^ (potencia)
+    % (módulo)
+
+    == (igual)
+    != (distinto)
+    <  (menor que)
+    <= (menor o igual)
+    >  (mayor que)
+    >= (mayor o igual)
+
+    ?
+    
+    || (or)
+    && (and)
+    !  (not)
+
+    :  (dos puntos)
+    ;  (puntos y coma)
+    (  (parentesis abre)
+    )  (parentesis cierra)
+    {  (llave abre)
+    }  (llave cierra)
+    =  (asignación)
+    '  (comilla simple)
+    .  (punto)
+    [  (corchete abre)
+    ]  (corchete cierra)
+    ,  (coma)
+
+
