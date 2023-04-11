@@ -143,6 +143,8 @@ cuerpo:   cuerpo instruccion
 
 instruccion:  declaracion ';'
             | asignacion ';'
+            | vector ';'
+            | listas ';'
 ;
 
 declaracion:  tipo ID '=' expresion
@@ -172,3 +174,31 @@ asignacion:   ID '=' expresion
             | ID '++'
             | ID '--'
 ;
+
+vector:   declararVector
+        | asignarVector
+;
+
+declararVector:   tipo '[' ']' ID '=' PR_NEW tipo '[' expresion ']' 
+                | tipo '[' ']' ID '=' '{' listaValores '}'
+;
+
+listaValores:     listaValores ',' expresion
+                | expresion
+;
+
+asignarVector:    ID '[' expresion ']' '=' expresion 
+;
+
+listas:   declararLista
+        | asignarLista
+;
+
+declararLista:  PR_LIST  '<' tipo '>' ID '=' PR_NEW PR_LIST '<' tipo '>'
+;
+
+asignarLista:     ID '.' PR_ADD '(' expresion ')'
+                | ID '[' '[' expresion ']' ']' '=' expresion
+;
+
+

@@ -3,3 +3,13 @@ boolean alert;
 numero = 2412;
 sero++;
 nuero--;
+
+list<int> lista2 = new list<int>;
+lista2.add(5);
+
+string[] vector2 = new string [ "hola" ];
+int[] numeros = {1,2,3};
+
+lista2[[2]] = 5;
+
+numeros[2] = 4;

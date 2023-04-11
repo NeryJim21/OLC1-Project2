@@ -86,3 +86,141 @@ SIMBOLOS
     ,  (coma)
 
 
+_____________________________________________________
+DECLARACIÓN
+<tipo> ID ';'
+<tipo> ID '=' <expresion> ';'
+
+ASIGNACIÓN
+ID '=' <expresion> ';'
+
+CASTEOS
+'(' <tipo> ')' <expresion>
+
+INCREMENTO
+<expresion> '+' '+' ';'
+
+DECREMENTO
+<expresion> '-' '-' ';'
+
+DECLARACIÓN VECTORES
+TIPO 1
+<tipo> '[' ']' ID '=' 'new' <tipo> '[' <expresion> ']' ';'
+
+TIPO 2
+<tipo> '[' ']' ID '=' '{' <listaValores> '}' ';'
+
+ACCESO A VECTORES
+ID '[' <expresion> ']'
+
+MODIFICAR VECTORES
+ID '[' <expresion> ']' '=' <expresion> ';'
+
+DECLARACIÓN DE LISTAS
+'list' '<' <tipo> '>' ID '=' 'new' 'list' '<' <tipo> '>' ';'
+
+AGREGAR VALOR A UNA LISTA
+ID '.' 'add' '(' <expresion> ')' ';'
+
+ACCESO A LISTAS
+ID '[' '[' <expresion> ']' ']' 
+
+MODIFICACIÓN DE LISTAS
+ID '[' '[' <expresion> ']' ']' '=' <expresion> ';'
+
+SENTENCIAS DE CONTROL
+'if' '(' <expresion> ')' '{' 
+    <instrucciones>
+'}'
+| 'if' '(' <expresion> ')' '{' 
+    <instrucciones>
+'}' 'else' '{'
+    <instrucciones>
+'}'
+
+'switch' '(' <expresion> ')' '{' 
+    <case_list> 
+    <default>
+'}'
+
+'case' <expresion> ':' 
+    <instrucciones>
+
+'default' ':'
+    <instrucciones>
+
+SENTENCIAS CÍCLICAS
+'while' '(' <expresion> ')' '{'
+    <instrucciones>
+'}'
+
+'for' '(' <declaración> | <asignación> ';' <condición> ';' <actualización> ')' '{'
+    <instrucciones>
+'}'
+
+'do' '{'
+    <instrucciones>
+'}' 'while' '(' <expresion> ')' ';'
+
+SENTENCIAS DE TRANSFERENCIA 
+'break' ';'
+
+'continue' ';'
+
+'return' ';'
+|   'return' <expresion> ';'
+
+FUNCIONES
+<tipo> ID '(' <parametros> ')' '{'
+    <instrucciones>
+    //LLeva return
+'}'
+
+PARAMETROS
+<parametros> ',' <tipo> ID
+|   <tipo> ID
+
+METODOS
+'void' ID '(' <parametros> ')' '{'
+    <instrucciones>
+'}'
+
+LLAMADA
+ID '(' <parametros_llamada> ')' 
+| ID '(' ')'
+
+PARAMETROS LLAMADA
+<parametros_llamada> ',' <expresion>
+| <expresion>
+
+FUNCIÓN PRINT
+'print' '(' <expresion> ')' ';'
+
+FUNCIÓN TOLOWER
+'toLower' '(' <expresion> ')' ';'
+
+FUNCIÓN TOUPPER
+'toUpper' '(' <expresion> ')' ';'
+
+FUNCIONES NATIVAS
+'length' '(' <valor> ')' ';'
+
+'truncate' '(' <valor> ')' ';'
+
+'round' '(' <valor> ')' ';'
+
+'typeof' '(' <valor> ')' ';'
+
+'toString' '(' <valor> ')' ';'
+
+'toCharArray' '(' <valor> ')' ';'
+
+MAIN
+'main' ID '(' ')' ';'
+| 'main' ID '(' <listaValores> ')' ';'
+
+LISTA VALORES
+<listaValores> ',' <expresion>
+| <expresion>
+
+
