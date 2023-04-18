@@ -29,8 +29,8 @@
 "else"              return 'PR_ELSE';
 "switch"            return 'PR_SWITCH';
 "case"              return 'PR_CASE';
-"default"           return 'DEFAULT';
-"break"             return 'BREAK';
+"default"           return 'PR_DEFAULT';
+"break"             return 'PR_BREAK';
 
 //Sentencias cíclicas
 "while"             return 'PR_WHILE';
@@ -134,71 +134,219 @@
 
 %%
 
-init: cuerpo EOF
+init:             globalBody EOF
 ;
 
-cuerpo:   cuerpo instruccion
-        | instruccion
+globalBody:       globalBody global
+                | global
 ; 
 
-instruccion:  declaracion ';'
-            | asignacion ';'
-            | vector ';'
-            | listas ';'
+global:           assigment ';'
+                | statment ';'
+                | vector ';'
+                | list ';'
+                | main ';'
+                | method
+                | error ';'
+                | error '}'
 ;
 
-declaracion:  tipo ID '=' expresion
-            | tipo ID
+localBody:        localBody local
+                | local
 ;
 
-tipo: PR_INT
-    | PR_DOUBLE
-    | PR_BOOLEAN
-    | PR_CHAR
-    | PR_STRING
+local:            callmethod ';'
+                | assigment ';'
+                | conditionals
+                | statment ';'
+                | control ';'
+                | vector ';'
+                | cyclicals
+                | print ';'
+                | list ';'
 ;
 
-expresion: valor
+main:             PR_MAIN callmethod
 ;
 
-valor:    DECIMAL
-        | NUMBER
-        | FALSE
-        | TRUE
-        | CHAR
-        | STR
-        | ID
+method:           PR_VOID ID '(' parameters ')' '{' localBody '}'
+                | type ID '(' parameters ')' '{' localBody '}'
+                | PR_VOID ID '(' ')' '{' localBody '}'
+                | type ID '(' ')' '{' localBody '}'
 ;
 
-asignacion:   ID '=' expresion
-            | ID '++'
-            | ID '--'
+callmethod:       ID '(' attributes ')'
+                | ID '(' ')'
 ;
 
-vector:   declararVector
-        | asignarVector
+callfunction:     ID '(' attributes ')'
+                | ID '(' ')'
 ;
 
-declararVector:   tipo '[' ']' ID '=' PR_NEW tipo '[' expresion ']' 
-                | tipo '[' ']' ID '=' '{' listaValores '}'
+parameters:       parameters ',' type ID
+                | type ID
 ;
 
-listaValores:     listaValores ',' expresion
-                | expresion
+attributes:       attributes ',' expression
+                | expression
 ;
 
-asignarVector:    ID '[' expresion ']' '=' expresion 
+print:            PR_PRINT '(' expression ')'
+                | PR_PRINT '(' ')'
 ;
 
-listas:   declararLista
-        | asignarLista
+statment:         type ID '=' expression
+                | tipo ID
 ;
 
-declararLista:  PR_LIST  '<' tipo '>' ID '=' PR_NEW PR_LIST '<' tipo '>'
+assigment:        ID '=' expression
+                | ID '++'
+                | ID '--'
 ;
 
-asignarLista:     ID '.' PR_ADD '(' expresion ')'
-                | ID '[' '[' expresion ']' ']' '=' expresion
+vector:           vectorStatment
+                | assigVector
+;
+
+vectorStatment:   type '[' ']' ID '=' PR_NEW type '[' expression ']' 
+                | type '[' ']' ID '=' '{' attributes '}'
+                | type '[' ']' ID '=' toChar
+;
+
+assigVector:      ID '[' expression ']' '=' expression 
+;
+
+list:             listStarment
+                | assigList
+;
+
+listStarment:     PR_LIST  '<' type '>' ID '=' PR_NEW PR_LIST '<' type '>'
+                | PR_LIST  '<' type '>' ID '=' toChar
+;
+
+assigList:        ID '.' PR_ADD '(' expression ')'
+                | ID '[' '[' expression ']' ']' '=' expression
+;
+
+valuetype:        DECIMAL
+                | NUMBER
+                | FALSE
+                | TRUE
+                | CHAR
+                | STR
+                | ID
+;
+
+type:             PR_INT
+                | PR_DOUBLE
+                | PR_BOOLEAN
+                | PR_CHAR
+                | PR_STRING
 ;
 
 
+expression:       expression '&&' expression
+                | expression '||' expression
+                | '!' expression
+                | expression '==' expression
+                | expression '!=' expression
+                | expression '<=' expression
+                | expression '>=' expression
+                | expression '<' expression
+                | expression '>' expression
+                | expression '+' expression
+                | expression '-' expression
+                | expression '*' expression
+                | expression '/' expression
+                | expression '%' expression
+                | expression '^' expression
+                | '-' expression %prec UMINUS
+                | expression '++'
+                | expression '--'
+                | ternary
+                | casting
+                | function
+                | valuetype
+                | structures
+                | callfunction
+                | '(' expression ')'
+;
+
+casting:          '(' type ')' expression %prec UCAST
+;
+
+structures:       ID '[' expression ']'
+                | ID '[' '[' expression ']' ']'
+;
+
+ternary:          expression '?' expression ':' expression
+;
+
+function:         PR_TRUNCATE '(' expression ')'
+                | PR_LENGTH '(' expression')'
+                | PR_TYPEOF '(' expression')'
+                | PR_TOLOWER '(' expression')'
+                | PR_TOUPPER '(' expression')'
+                | PR_ROUND '(' expression')'
+                | PR_TOSTRING '(' expression')'
+;
+
+toChar:           PR_TOCHARARRAY '(' expression ')'
+;
+
+conditionals:     ifcondition
+                | switchcondition
+;
+
+ifcondition:      PR_IF '(' expression ')' '{' localBody '}' elsecondition
+                | PR_IF '(' expression ')' '{' localBody '}'
+                | PR_IF '(' expression ')' '{' '}' elsecondition
+                | PR_IF '(' expression ')' '{' '}'
+;
+
+elsecondition:    PR_ELSE ifcondition
+                | PR_ELSE '{' localBody '}'
+                | PR_ELSE '{' '}'
+;
+
+switchcondition:  PR_SWITCH '(' expression ')' '{' casecondition defaultcondition '}'
+                | PR_SWITCH '(' expression ')' '{' casecondition '}'
+                | PR_SWITCH '(' expression ')' '{' default '}'
+                | PR_SWITCH '(' expression ')' '{' '}'
+;
+
+casecondition:    casecondition PR_CASE expression ':' localBody
+                | casecondition PR_CASE expression ':'
+                | PR_CASE expression ':' localBody
+                | PR_CASE expression ':'
+;
+
+defaultcondition: PR_DEFAULT ':' localBody
+                | PR_DEFAULT ':'
+;
+
+cyclicals:        whilecycle
+                | forcycle
+;
+
+whilecycle:       PR_DO '{' localBody '}' PR_WHILE '(' expression ')' ';'
+                | PR_WHILE '(' expression ')' '{' localBody '}'
+                | PR_DO '{' '}' PR_WHILE '(' expression ')' ';'
+                | PR_WHILE '(' expression ')' '{' '}'
+;
+
+forcycle:         PR_FOR '(' assigmentFor ';' expression ';' assigment ')' '{' localBody '}'
+                | PR_FOR '(' statmentFor ';' expression ';' assigment ')' '{' localBody '}'
+;
+
+statmentFor:      type ID '=' expression
+;
+
+assigmentFor:     ID '=' expression
+;
+
+control:          PR_RETURN expression
+                | PR_RETURN
+                | PR_CONTINUE
+                | PR_BREAK
+;
