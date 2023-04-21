@@ -1,0 +1,40 @@
+import { Node, Value, ValueType } from '../../types/type'
+import { SymbolTable } from '../../symbols/symbolTable'
+import { MethodTable } from '../../symbols/methodTable'
+import { Expression } from '../../types/expression'
+import { output } from '../../reports/report'
+import { Error } from '../../reports/error'
+import { v4 as uuidv4 } from 'uuid'
+
+
+export class Length extends Expression {
+    private value:Expression
+    constructor(value:Expression, line:number, column:number){
+        super(line, column)
+        this.value = value
+    }
+
+    public run(globalST:SymbolTable, localST:SymbolTable, method:MethodTable, environment:string):Value{
+        const value = this.value.run(globalST, localST, method, environment)
+        
+        if(value.type === ValueType.STRING || value.type === ValueType.VECTOR){
+            return {type: ValueType.INT, value: (value.value).length}
+        }
+        if(value.type === ValueType.LIST){
+            return {type: ValueType.INT, value: (value.value).length-1}
+        }
+        
+        output.setOutput(`-->Semántico, Length no es aplicable a tipo: ${ValueType[value.type]} (${+this.line}:${this.column}).`)
+        throw new Error("Semántico", `Length no es aplicable a tipo: ${ValueType[value.type]}.`, this.line, this.column)
+    }
+
+    public getAST(methods:MethodTable):Node{
+        const id = `n${uuidv4().replace(/\-/g, "")}`
+        const value = this.value.getAST(methods)
+        const ast = `${id} [label="Length"];
+        ${value.ast}
+        ${id} -> ${value.id};\n`
+
+        return {id: id, ast:ast}
+    }
+}

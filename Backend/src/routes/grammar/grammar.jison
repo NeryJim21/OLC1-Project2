@@ -1,3 +1,10 @@
+//Imports
+%{
+    //Errores
+    const { errors, output } = require('../reports/report');
+    const { Error } = require('../reports/report')
+%}
+
 //Análisis lexico
 %lex
 
@@ -112,7 +119,8 @@
 
 <<EOF>>                         return 'EOF';
 
-.                               return 'INVALID';
+.   { output.setOutput(`-->Léxico, caracter: ${yytext} no pertenece al lenguaje (${yylloc.first_line}:${yylloc.first_column}).`); 
+      errors.add(new Error("Léxico", `Caracter: ${yytext} no pertenece al lenguaje.`, yylloc.first_line, yylloc.first_column)); }
 
 /lex
 
@@ -134,36 +142,38 @@
 
 %%
 
-init:             globalBody EOF
+init:             globalBody EOF        { return $1; }
 ;
 
-globalBody:       globalBody global
-                | global
+globalBody:       globalBody global     { $1.push($2); $$ = $1; }
+                | global                { $$ = [$1]; }
 ; 
 
-global:           assigment ';'
-                | statment ';'
-                | vector ';'
-                | list ';'
-                | main ';'
-                | method
-                | error ';'
-                | error '}'
+global:           assigment ';'         { $$ = $1; }
+                | statment ';'          { $$ = $1; }
+                | vector ';'            { $$ = $1; }
+                | list ';'              { $$ = $1; }
+                | main ';'              { $$ = $1; }
+                | method                { $$ = $1; }
+                | error ';'             { output.setOutput(`-->Sintáctico, se esperaba: ${yytext} (${this._$.first_line}:${this._$.first_column}).`); 
+                                        errors.add(new Error("Sintáctico", `Se esperaba: ${yytext}`, this._$.first_line, this._$.first_column)); }
+                | error '}'             { output.setOutput(`-->Sintáctico, se esperaba, ${yytext} (${this._$.first_line}:${this._$.first_column}).`); 
+                                        errors.add(new Error("Sintáctico", `Se esperaba: ${yytext}`, this._$.first_line, this._$.first_column)); }
 ;
 
-localBody:        localBody local
-                | local
+localBody:        localBody local       { $1.push($2); $$ = $1; }
+                | local                 { $$ = [$1]; }
 ;
 
-local:            callmethod ';'
-                | assigment ';'
-                | conditionals
-                | statment ';'
-                | control ';'
-                | vector ';'
-                | cyclicals
-                | print ';'
-                | list ';'
+local:            callmethod ';'        { $$ = $1; }
+                | assigment ';'         { $$ = $1; }
+                | conditionals          { $$ = $1; }
+                | statment ';'          { $$ = $1; }
+                | control ';'           { $$ = $1; }
+                | vector ';'            { $$ = $1; }
+                | cyclicals             { $$ = $1; }
+                | print ';'             { $$ = $1; }
+                | list ';'              { $$ = $1; }
 ;
 
 main:             PR_MAIN callmethod

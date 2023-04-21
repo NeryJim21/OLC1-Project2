@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "jison": "jison ./src/routes/grammar/grammar.jison && move grammar.js ./src/routes/grammar/"
   },
   "keywords": [],
   "author": "",
@@ -13,11 +14,13 @@
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
-    "nomnom": "^1.8.1"
+    "nomnom": "^1.8.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.11",
+    "@types/uuid": "^9.0.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   }
