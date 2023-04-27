@@ -1,0 +1,19 @@
+.Tabbar{
+    background:#ECECEC;
+    color: #fff;
+  }
+
+.Button {
+  background: transparent;
+  border: none;
+  color:cyan;
+  justify-content: right;
+  font-size: 20px;
+}
+
+.Button:hover {
+  transition: all 0.2s ease-in;
+  color:crimson;
+  border: white;
+  border-radius: 5px;
+}

@@ -1,0 +1,42 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  th,
+  td {
+    border: 5px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #ececec;
+    font-size: 20px;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #dcd8e4;
+  }
+
+
+  tr:nth-child(even) {
+    background-color: #eee9f6;
+  }
+
+  th.asc {
+    border-bottom: 5px solid #e9dbc2;
+  }
+  
+  th.desc {
+    border-top: 5px solid #EBC7C7;
+  }

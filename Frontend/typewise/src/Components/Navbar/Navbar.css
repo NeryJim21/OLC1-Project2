@@ -1,0 +1,40 @@
+.Navbar {
+    background: #5b4196;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+.Navbar-name {
+    color: #ECECEC;
+    justify-self: start;
+    margin-left: 30px;
+    font-family: cursive;
+  }
+
+.Navbar-menu {
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+  grid-gap: 25px;
+  list-style: none;
+  text-align: center;
+  width: 70vw;
+  justify-content:flex-start;
+  margin-left: 2rem;
+  margin-top: 1rem;
+ }
+
+.Navbar-item{
+  color: #519e49;
+  text-decoration: none;
+  font-size: 1.4em;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.Navbar-item:hover{
+  transition: all 0.2s ease-in;
+  color: #EEF18C;
+ }
