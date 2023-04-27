@@ -4,9 +4,8 @@ import { download } from './Download'
 import { getOutput } from './Servises'
 
 import 'codemirror/mode/clike/clike.js'
-import 'codemirror/theme/monokai.css'
+import 'codemirror/theme/monokai.css'  
 import 'codemirror/theme/liquibyte.css'
-
 import 'codemirror/lib/codemirror.css'
 import './Editor.css'
 

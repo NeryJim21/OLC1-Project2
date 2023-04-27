@@ -5,7 +5,7 @@ import './Navbar.css'
 const Navbar = () => {
     return (
         <nav className="Navbar">
-          <h1 className="Navbar-name">Syscompiler</h1>
+          <h1 className="Navbar-name">TypeWise</h1>
             <ul className="Navbar-menu">
               <li>
                 <Link to="/" className="Navbar-item">Editor</Link>

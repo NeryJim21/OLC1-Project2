@@ -40,7 +40,7 @@ const TabBar = () => {
 
     return (
         <div>
-            {/*console.log('render')*/}
+            {console.log('render')}
             <Tabs onSelect={index => hanldleClose(index)} className="Tabbar">
                 <TabList>
                     {tabs}
