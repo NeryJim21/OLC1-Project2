@@ -1,5 +1,5 @@
-import { MethodTable } from "../symbols/methodTable";
-import { Instruction } from "../types/instruction";
+import { MethodTable } from "../symbols/methodTable"
+import { Instruction } from "../types/instruction"
 
 export function getDOT(ast:any, methods:MethodTable, id:string){
     let dot:string = ``

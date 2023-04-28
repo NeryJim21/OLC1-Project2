@@ -4,24 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
-    "jison": "jison ./src/routes/grammar/grammar.jison && move grammar.js ./src/routes/grammar/"
+    "jison": "jison ./src/routes/grammar/grammar.jison && move grammar.js ./src/routes/grammar/",
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22",
-    "nomnom": "^1.8.1",
-    "uuid": "^9.0.0"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/node": "^18.15.11",
-    "@types/uuid": "^9.0.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.0.4"
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.10.2",
+    "@types/uuid": "^8.3.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
   }
 }

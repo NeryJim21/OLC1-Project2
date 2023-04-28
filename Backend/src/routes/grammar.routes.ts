@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router } from 'express'
 import * as grammarCtrl from './grammar.controller'
 
 const router = Router()

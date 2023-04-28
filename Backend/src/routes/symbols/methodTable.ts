@@ -1,9 +1,9 @@
-import {Parameters } from '../instructions/functions/parameters'
-import {Instruction} from '../types/instruction'
+import { Parameters } from '../instructions/functions/parameters'
+import { Instruction } from '../types/instruction'
 import { ValueType } from '../types/type'
-import {Method} from './method'
+import { Method } from './method'
 
-export class MethodTable{
+export class MethodTable {
     private _methods:Method[]
 
     constructor(methods:Method[]){

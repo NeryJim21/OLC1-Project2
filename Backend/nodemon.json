@@ -1,7 +1,0 @@
-{
-    "wath":[
-        "src"
-    ],
-    "ext" : "ts, txt",
-    "exec" : "ts-node ./src/"
-}

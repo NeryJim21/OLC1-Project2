@@ -1,6 +1,6 @@
-import { RequestHandler } from "express";
-import { run, getDot } from "./compiler";
-import { errors, tokens } from "./reports/report";
+import { RequestHandler } from 'express'
+import { run, getDot } from './compiler'
+import { errors, tokens } from './reports/report'
 
 export const testGrammar:RequestHandler = (req, res) => {
     res.json(run(req.body.code))

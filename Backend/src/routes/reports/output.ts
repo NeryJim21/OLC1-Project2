@@ -1,5 +1,5 @@
 export class Output{
-    private output:string
+    private output:string 
 
     constructor(){
         this.output = ''
@@ -10,7 +10,7 @@ export class Output{
     }
 
     public getOutput(){
-        return this.output
+        return this.output 
     }
 
     public setOutput(output:string){

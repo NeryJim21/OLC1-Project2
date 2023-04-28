@@ -1,5 +1,5 @@
-import { ValueType } from "../types/type";
-import { Symbol } from "./symbol";
+import { ValueType } from '../types/type'
+import { Symbol } from './symbol'
 
 export class SymbolTable {
     private _symbols:Symbol[]
@@ -24,7 +24,7 @@ export class SymbolTable {
         if(symbol) symbol.value = value
     }
 
-    get symbols(){
+    get symbols() {
         return this._symbols
     }
 }

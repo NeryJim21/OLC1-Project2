@@ -1,9 +1,9 @@
-import { Main } from "../instructions/functions/main";
-import { errors, output } from "../reports/report";
-import { MethodTable } from "../symbols/methodTable";
-import { SymbolTable } from "../symbols/symbolTable";
-import { Instruction } from "../types/instruction";
-import { Error } from "../reports/error";
+import { Main } from '../instructions/functions/main'
+import { MethodTable } from '../symbols/methodTable'
+import { SymbolTable } from '../symbols/symbolTable'
+import { Instruction } from '../types/instruction'
+import { errors, output } from '../reports/report'
+import { Error } from '../reports/error'
 
 export function getAST(ast:any, globalST:SymbolTable, methods:MethodTable){
     const main:any[] = []
@@ -14,9 +14,10 @@ export function getAST(ast:any, globalST:SymbolTable, methods:MethodTable){
             
             else if(instruction instanceof Main)
                 instruction.run(main)
-        } catch(error){
+            
+        } catch (error) {
             if(error instanceof Error) errors.add(error)
-        } 
+        }
     }
     return main
 }

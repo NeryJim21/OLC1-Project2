@@ -1,6 +1,6 @@
-import { TokenTable } from "./tokenTable";
-import { ErrorTable } from "./errorTable";
-import { Output } from "./output";
+import { TokenTable } from './tokenTable'
+import { ErrorTable } from './errorTable'
+import { Output } from './output'
 
 export const output = new Output()
 export const tokens = new TokenTable()

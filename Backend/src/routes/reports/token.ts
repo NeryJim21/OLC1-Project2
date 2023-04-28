@@ -6,7 +6,8 @@ export class Token{
     public line:number
     public column:number
 
-    constructor(id:string, type:string, type2:string, environment:string, line:number, column:number){
+
+	constructor(id:string, type:string, type2:string, environment:string, line:number, column:number){
         this.id = id
         this.type = type
         this.type2 = type2
@@ -14,4 +15,5 @@ export class Token{
         this.line = line
         this.column = column
     }
+
 }
