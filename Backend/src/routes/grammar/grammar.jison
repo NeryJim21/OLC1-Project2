@@ -177,7 +177,7 @@
 [0-9]+\b                        return 'NUMBER';
 "true"                          return 'TRUE';
 "false"                         return 'FALSE';
-([a-zA-Z])[a-zA-Z0-9_]*         return 'ID';
+([a-zA-Z_])[a-zA-Z0-9_ñÑ]*      return 'ID';
 
 <<EOF>>                         return 'EOF';
 

@@ -12,10 +12,10 @@ import { v4 as uuidv4 } from 'uuid'
 export class Statment extends Instruction{
 
     private type: ValueType
-    private id:string[]
+    private id:string
     private value:Expression|null
 
-    constructor(type: ValueType, id:string[], value:Expression|null, line:number, column:number){
+    constructor(type: ValueType, id:string, value:Expression|null, line:number, column:number){
         super(line, column)
         this.type = type
         this.id = id
@@ -23,9 +23,9 @@ export class Statment extends Instruction{
     }
 
     public run(globalST:SymbolTable, localST:SymbolTable, method:MethodTable, environment:string) {
-        for(var i in this.id){
-            this.setStatment(this.id[i], globalST, localST, method, environment)
-        }
+        //for(var i in this.id){
+            this.setStatment(this.id, globalST, localST, method, environment)
+        //}
     }
 
     private setStatment(id:string, globalST:SymbolTable, localST:SymbolTable, method:MethodTable, environment:string){
