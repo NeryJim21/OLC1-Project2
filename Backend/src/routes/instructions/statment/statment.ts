@@ -23,9 +23,7 @@ export class Statment extends Instruction{
     }
 
     public run(globalST:SymbolTable, localST:SymbolTable, method:MethodTable, environment:string) {
-        //for(var i in this.id){
-            this.setStatment(this.id, globalST, localST, method, environment)
-        //}
+        this.setStatment(this.id, globalST, localST, method, environment)
     }
 
     private setStatment(id:string, globalST:SymbolTable, localST:SymbolTable, method:MethodTable, environment:string){

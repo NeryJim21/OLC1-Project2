@@ -2,7 +2,7 @@
 %{
     //Errores
     const { errors, output } = require('../reports/report');
-    const { Error } = require('../reports/report')
+    //const { Error } = require('../reports/report')
 
     // Tipos
     const { ValueType } = require('../types/type');
@@ -268,7 +268,7 @@ print:            PR_PRINT '(' expression ')'                                   
 ;
 
 statment:         type ID '=' expression                                                        { $$ = new Statment($1, $2, $4, @1.first_line, @1.first_column); }
-                | tipo ID                                                                       { $$ = new Statment($1, $2, null, @1.first_line, @1.first_column);}
+                | type ID                                                                       { $$ = new Statment($1, $2, null, @1.first_line, @1.first_column);}
 ;
 
 assigment:        ID '=' expression                                                             { $$ = new Assigment($1, $3, @1.first_line, @1.first_column); }

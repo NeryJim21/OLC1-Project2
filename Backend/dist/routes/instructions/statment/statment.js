@@ -16,9 +16,7 @@ class Statment extends instruction_1.Instruction {
         this.value = value;
     }
     run(globalST, localST, method, environment) {
-        for (var i in this.id) {
-            this.setStatment(this.id[i], globalST, localST, method, environment);
-        }
+        this.setStatment(this.id, globalST, localST, method, environment);
     }
     setStatment(id, globalST, localST, method, environment) {
         const aux = localST.get(id);
