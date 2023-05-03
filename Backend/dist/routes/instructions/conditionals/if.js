@@ -73,7 +73,7 @@ class If extends instruction_1.Instruction {
                 ast += `${elseb.ast}
                 ${id_else} [label="Else"];
                 ${id_else} -> ${elseb.id};
-                ${id} -> ${id_else};\n`;
+                ${id} -> ${id_else}; `;
             }
         }
         ast = `${id} [label="If"];

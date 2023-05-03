@@ -88,7 +88,7 @@ class CallMethod extends instruction_1.Instruction {
             const body = method.body;
             temp.clearBody(this.id);
             const id_body = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-            ast += `${id_body} [label="Cuerpo"];
+            ast += `${id_body} [label="Cuerpo"] ;
             ${id} -> ${id_body}; `;
             for (var i in body) {
                 const aux = body[i].getAST(temp);

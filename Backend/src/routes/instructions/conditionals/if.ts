@@ -84,7 +84,7 @@ export class If extends Instruction {
                 ast += `${elseb.ast}
                 ${id_else} [label="Else"];
                 ${id_else} -> ${elseb.id};
-                ${id} -> ${id_else};\n`
+                ${id} -> ${id_else}; `
             }
         }
 
