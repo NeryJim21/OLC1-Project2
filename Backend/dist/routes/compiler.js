@@ -33,18 +33,13 @@ function run(input) {
 exports.run = run;
 function getDot() {
     const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-    let dot = `node [shape=box]; 
-    ${id} [label="AST"];
-    ${(0, dot_1.getDOT)(ast, methods, id)}`;
+    let dot = `node [shape=box];${id} [label="AST"];${(0, dot_1.getDOT)(ast, methods, id)}`;
     if (main.length === 1) {
         const value = main[0].getAST(methods);
         const id_main = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        dot += `${id_main} [label="MAIN"];
-        ${id} -> ${id_main}
-        ${id_main} -> ${value.id};
-        ${value.ast} `;
-        return `digraph G { ${dot} }`;
+        dot += `${id_main} [label="MAIN"];${id} -> ${id_main} ${id_main} -> ${value.id}; ${value.ast} `;
+        return `digraph G { ${dot.replace(/\n/g, "").replace(/\\/g, "")} }`;
     }
-    return `digraph G { ${dot} }`;
+    return `digraph G { ${dot.replace(/\n/g, "").replace(/\\/g, "")} }`;
 }
 exports.getDot = getDot;
