@@ -30,7 +30,7 @@ export class WriteLine extends Instruction{
         const value = this.getValue(methods)
         const ast = `${id} [label="WriteLine"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
         
         return {id: id, ast: ast}
     }
@@ -40,7 +40,7 @@ export class WriteLine extends Instruction{
             return this.expression.getAST(methods)
         }
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label=""];`
+        const ast = `${id} [label=""]; `
         return {id: id, ast: ast}
     }
 }

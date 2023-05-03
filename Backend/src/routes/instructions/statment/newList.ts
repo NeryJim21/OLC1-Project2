@@ -70,9 +70,9 @@ export class NewList extends Instruction{
     public getAST(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const aux = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label="Declaracion\\nLista"];
-        ${aux} [label="Identificador\\n${this.id}"];
-        ${id} -> ${aux};\n`
+        const ast = `${id} [label="Declaracion Lista"];
+        ${aux} [label="Identificador ${this.id}"];
+        ${id} -> ${aux}; `
         
         return {id: id, ast: ast}
     }

@@ -28,7 +28,7 @@ export class Truncate extends Expression {
         const value = this.value.getAST(methods)
         const ast = `${id} [label="Truncate"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast:ast}
     }    

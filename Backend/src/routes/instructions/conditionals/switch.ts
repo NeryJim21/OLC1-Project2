@@ -72,27 +72,27 @@ export class Switch extends Instruction{
         ${value.ast}
         ${id} -> ${value.id};
         ${body.ast}
-        ${id} -> ${body.id};\n`
+        ${id} -> ${body.id}; `
         
         return {id: id, ast: ast}
     }
 
     private getBody(methods:MethodTable){
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Cuerpo"];\n`
+        let ast = `${id} [label="Cuerpo"]; `
         for(var i in this.body){
             const aux = this.body[i].getAST(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
         if(this.def){
             const aux = `n${uuidv4().replace(/\-/g, "")}`
-            ast += `${aux} [label="Default"];\n
-            ${id} -> ${aux};\n`
+            ast += `${aux} [label="Default"]; 
+            ${id} -> ${aux}; `
             for(var i in this.def){
                 const def = this.def[i].getAST(methods)
                 ast += `${def.ast}
-                ${aux} -> ${def.id};\n`
+                ${aux} -> ${def.id}; `
             }
 
         }

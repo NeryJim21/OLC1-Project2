@@ -23,18 +23,18 @@ export class Case {
         ${value.ast}
         ${id} -> ${value.id};
         ${body.ast}
-        ${id} -> ${body.id};\n`
+        ${id} -> ${body.id}; `
         
         return {id: id, ast: ast}
     }
 
     private getBody(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Cuerpo"];\n`
+        let ast = `${id} [label="Cuerpo"]; `
         for(var i in this.body){
             const aux = this.body[i].getAST(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
 
         return {id: id, ast: ast}

@@ -24,7 +24,7 @@ class GetValue extends expression_1.Expression {
     }
     getAST() {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        const ast = `${id} [label="Identificador\\n${this.id}"];\n`;
+        const ast = `${id} [label="Identificador ${this.id}"]; `;
         return { id: id, ast: ast };
     }
 }

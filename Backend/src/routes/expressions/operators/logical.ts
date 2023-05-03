@@ -61,12 +61,12 @@ export class Logical extends Expression{
         const left = this.left.getAST(methods)
         let ast = `${id} [label="${this.getOperation()}"];
         ${left.ast}
-        ${id} -> ${left.id};\n`
+        ${id} -> ${left.id}; `
 
         if(this.right !== null){
             const right = this.right.getAST(methods)
             ast += `${right.ast}
-            ${id} -> ${right.id};\n`
+            ${id} -> ${right.id}; `
         }
         
         return {id: id, ast:ast}
@@ -75,11 +75,11 @@ export class Logical extends Expression{
     private getOperation():string{
         switch(this.type){
             case LogicalType.AND:
-                return `And\\n&&`
+                return `And &&`
             case LogicalType.OR:
-                return `Or\\n||`
+                return `Or ||`
             case LogicalType.NOT:
-                return `Not\\n!`
+                return `Not !`
         }
     }
 }

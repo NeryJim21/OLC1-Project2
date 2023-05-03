@@ -52,11 +52,11 @@ export class Statment extends Instruction{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const aux = `n${uuidv4().replace(/\-/g, "")}`
         const value = this.getValue(methods)
-        const ast = `${id} [label="Declaracion\\nVariable"];
-        ${aux} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Declaracion Variable"];
+        ${aux} [label="Identificador ${this.id}"];
         ${id} -> ${aux};
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
         
         return {id: id, ast: ast}
     }
@@ -67,7 +67,7 @@ export class Statment extends Instruction{
         }
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const value = defaultValue(this.type)
-        const ast = `${id} [label="${this.getType(value.type)}\\n${value.value}"];\n`
+        const ast = `${id} [label="${this.getType(value.type)} ${value.value}"]; `
 
         return {id: id, ast: ast}
     }

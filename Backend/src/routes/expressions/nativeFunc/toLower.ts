@@ -27,7 +27,7 @@ export class ToLower extends Expression {
         const value = this.value.getAST(methods)
         const ast = `${id} [label="ToLower"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast:ast}
     }    

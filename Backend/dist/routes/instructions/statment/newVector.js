@@ -73,20 +73,20 @@ class NewVector extends instruction_1.Instruction {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const aux = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.getValue(methods);
-        const ast = `${id} [label="Declaracion\\nVector"];
-        ${aux} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Declaracion nVector"];
+        ${aux} [label="Identificador ${this.id}"];
         ${id} -> ${aux};
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
     getValue(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        let ast = `${id} [label="Valores"];\n`;
+        let ast = `${id} [label="Valores"]; `;
         if (this.value instanceof toChar_1.ToChar) {
             const value = this.value.getAST(methods);
             ast += `${value.ast}
-            ${id} -> ${value.id};\n`;
+            ${id} -> ${value.id}; `;
             return { id: id, ast: ast };
         }
         else if (this.value instanceof expression_1.Expression) {
@@ -96,7 +96,7 @@ class NewVector extends instruction_1.Instruction {
             for (var i in this.value) {
                 const aux = this.value[i].getAST(methods);
                 ast += `${aux.ast}
-                ${id} -> ${aux.id};\n`;
+                ${id} -> ${aux.id}; `;
             }
             return { id: id, ast: ast };
         }

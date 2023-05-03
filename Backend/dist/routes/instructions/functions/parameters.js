@@ -12,9 +12,9 @@ class Parameters {
     getAST() {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const id_type = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        const ast = `${id} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Identificador ${this.id}"];
         ${id_type} [label="${this.getType(this.type)}"];
-        ${id} -> ${id_type};\n`;
+        ${id} -> ${id_type}; `;
         return { id: id, ast: ast };
     }
     getType(type) {
@@ -33,11 +33,11 @@ class Parameters {
             case type_1.ValueType.LIST:
                 if (this.type2)
                     type2 = this.getType(this.type2);
-                return `Lista\\n${type2}`;
+                return `Lista ${type2}`;
             case type_1.ValueType.VECTOR:
                 if (this.type2)
                     type2 = this.getType(this.type2);
-                return `Vector\\n${type2}`;
+                return `Vector ${type2}`;
             default:
                 return ``;
         }

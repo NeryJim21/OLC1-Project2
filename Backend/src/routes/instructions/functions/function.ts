@@ -31,14 +31,14 @@ export class Function extends Instruction{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const id_id = `n${uuidv4().replace(/\-/g, "")}`
         const parameters = this.getParameter()
-        let ast = `${id} [label="Declaracion\\nFuncion ${this.getType()}"];
-        ${id_id} [label="Identificador\\n${this.id}"];
-        ${id} -> ${id_id};\n`
+        let ast = `${id} [label="Declaracion Funcion ${this.getType()}"];
+        ${id_id} [label="Identificador ${this.id}"];
+        ${id} -> ${id_id}; `
 
         if(this.parameters.length !== 0){
             const parameters = this.getParameter()
             ast += `${parameters.ast}
-            ${id} -> ${parameters.id};\n`
+            ${id} -> ${parameters.id}; `
         }
 
         return {id: id, ast: ast}
@@ -46,11 +46,11 @@ export class Function extends Instruction{
 
     private getParameter():Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Parametros"];\n`
+        let ast = `${id} [label="Parametros"]; `
         for(var i in this.parameters){
             const par = this.parameters[i].getAST()
             ast += `${par.ast}
-            ${id} -> ${par.id};\n`
+            ${id} -> ${par.id}; `
         }
         
         return {id: id, ast: ast}

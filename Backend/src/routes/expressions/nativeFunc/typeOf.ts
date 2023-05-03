@@ -22,7 +22,7 @@ export class TypeOf extends Expression {
         const value = this.value.getAST(methods)
         const ast = `${id} [label="TypeOf"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast:ast}
     }    

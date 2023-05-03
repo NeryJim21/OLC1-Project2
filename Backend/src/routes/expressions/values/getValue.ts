@@ -30,7 +30,7 @@ export class GetValue extends Expression{
 
     public getAST():Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label="Identificador\\n${this.id}"];\n`
+        const ast = `${id} [label="Identificador ${this.id}"]; `
 
         return {id: id, ast: ast}
     }

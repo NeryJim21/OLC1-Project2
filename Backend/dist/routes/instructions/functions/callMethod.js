@@ -78,33 +78,33 @@ class CallMethod extends instruction_1.Instruction {
         const temp = new methodTable_1.MethodTable(methods.methods);
         const method = methods.get(this.id);
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        let ast = `${id} [label="Llamada Metodo\\n${this.id}"];\n`;
+        let ast = `${id} [label="Llamada Metodo ${this.id}"]; `;
         if (this.atributes.length !== 0) {
             const aux = this.getAtributes(methods);
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`;
+            ${id} -> ${aux.id}; `;
         }
         if (method && method.body.length !== 0) {
             const body = method.body;
             temp.clearBody(this.id);
             const id_body = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
             ast += `${id_body} [label="Cuerpo"];
-            ${id} -> ${id_body};\n`;
+            ${id} -> ${id_body}; `;
             for (var i in body) {
                 const aux = body[i].getAST(temp);
                 ast += `${aux.ast}
-                ${id_body} -> ${aux.id};\n`;
+                ${id_body} -> ${aux.id}; `;
             }
         }
         return { id: id, ast: ast };
     }
     getAtributes(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        let ast = `${id} [label="Atributos"];\n`;
+        let ast = `${id} [label="Atributos"]; `;
         for (var i in this.atributes) {
             const aux = this.atributes[i].getAST(methods);
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`;
+            ${id} -> ${aux.id}; `;
         }
         return { id: id, ast: ast };
     }

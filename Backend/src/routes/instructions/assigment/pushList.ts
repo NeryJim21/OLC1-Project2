@@ -51,11 +51,11 @@ export class PushList extends Instruction{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const id_id = `n${uuidv4().replace(/\-/g, "")}`
         const value = this.value.getAST(methods)
-        const ast = `${id} [label="Añadir a\\nLista"];
-        ${id_id} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Añadir a Lista"];
+        ${id_id} [label="Identificador ${this.id}"];
         ${id} -> ${id_id};
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast: ast}
     }

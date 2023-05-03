@@ -18,7 +18,7 @@ class ToString extends expression_1.Expression {
         const value = this.value.getAST(methods);
         const ast = `${id} [label="ToString"];
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
 }

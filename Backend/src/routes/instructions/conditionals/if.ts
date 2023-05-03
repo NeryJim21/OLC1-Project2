@@ -69,13 +69,13 @@ export class If extends Instruction {
         let ast = `${value.ast}
         ${id} -> ${value.id};
         ${body.ast}
-        ${id} -> ${body.id};\n`
+        ${id} -> ${body.id}; `
 
         if(this.elseC instanceof Instruction){
             const elseif = this.elseC.getAST(methods)
             ast += `${elseif.ast}
             ${elseif.id} [label="Else If"];
-            ${id} -> ${elseif.id};\n`
+            ${id} -> ${elseif.id}; `
         }
         else{
             if(this.elseC){
@@ -96,11 +96,11 @@ export class If extends Instruction {
 
     private getBody(methods:MethodTable, body:Instruction[]):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Cuerpo"];\n`
+        let ast = `${id} [label="Cuerpo"]; `
         for(var i in body){
             const aux = body[i].getAST(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
         return {id: id, ast: ast}
     }

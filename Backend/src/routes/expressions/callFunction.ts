@@ -92,12 +92,12 @@ export class CallFunction extends Expression{
 
         const method = methods.get(this.id)
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Llamada Funcion\\n${this.id}"];\n`
+        let ast = `${id} [label="Llamada Funcion ${this.id}"]; `
 
         if(this.atributes.length !== 0){
             const aux = this.getAtributes(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
 
         if(method && method.body.length !== 0){
@@ -105,12 +105,12 @@ export class CallFunction extends Expression{
             temp.clearBody(this.id)
             const id_body = `n${uuidv4().replace(/\-/g, "")}`
             ast += `${id_body} [label="Cuerpo"];
-            ${id} -> ${id_body};\n`
+            ${id} -> ${id_body}; `
 
             for(var i in body){
                 const aux = body[i].getAST(temp)
                 ast += `${aux.ast}
-                ${id_body} -> ${aux.id};\n`
+                ${id_body} -> ${aux.id}; `
             }
         }
 
@@ -119,12 +119,12 @@ export class CallFunction extends Expression{
 
     private getAtributes(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Atributos"];\n`
+        let ast = `${id} [label="Atributos"]; `
 
         for(var i in this.atributes){
             const aux = this.atributes[i].getAST(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
 
         return {id: id, ast: ast}

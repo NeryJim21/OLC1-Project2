@@ -71,7 +71,7 @@ export class Relational extends Expression{
         ${left.ast}
         ${id} -> ${left.id};
         ${right.ast}
-        ${id} -> ${right.id};\n`
+        ${id} -> ${right.id}; `
 
         return {id: id, ast:ast}
     }
@@ -79,17 +79,17 @@ export class Relational extends Expression{
     private getOperation():string{
         switch(this.type){
             case RelationalType.EQUALS:
-                return `Igual Igual\\n==`
+                return `Igual Igual ==`
             case RelationalType.NEQUALS:
-                return `No Igual\\n!=`
+                return `No Igual !=`
             case RelationalType.GEQUALS:
-                return `Mayor Igual\\n>=`
+                return `Mayor Igual >=`
             case RelationalType.LEQUALS:
-                return `Menor Igual\\n<=`
+                return `Menor Igual <=`
             case RelationalType.GREATER:
-                return `Mayor\\n>`
+                return `Mayor >`
             case RelationalType.LESS:
-                return `Menor\\n<`
+                return `Menor <`
         }
     }
 }

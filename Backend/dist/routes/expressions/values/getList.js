@@ -55,12 +55,12 @@ class GetList extends expression_1.Expression {
         const index_id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const index = this.index.getAST(methods);
         const ast = `${id} [label="Lista"];
-        ${id_id} [label="Identificador\\n${this.id}"];
+        ${id_id} [label="Identificador ${this.id}"];
         ${id} -> ${id_id};
         ${index_id} [label="Indice"];
         ${id} -> ${index_id};
         ${index.ast}
-        ${index_id} -> ${index.id};\n`;
+        ${index_id} -> ${index.id}; `;
         return { id: id, ast: ast };
     }
 }

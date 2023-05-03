@@ -59,11 +59,11 @@ class DoWhile extends instruction_1.Instruction {
         ${condition.ast}
         ${id} -> ${condition.id};
         ${aux} [label="Cuepo"];
-        ${id} -> ${aux};\n`;
+        ${id} -> ${aux}; `;
         for (var i in this.body) {
             const temp = this.body[i].getAST(methods);
             ast += `${temp.ast}
-            ${aux} -> ${temp.id};\n`;
+            ${aux} -> ${temp.id}; `;
         }
         return { id: id, ast: ast };
     }

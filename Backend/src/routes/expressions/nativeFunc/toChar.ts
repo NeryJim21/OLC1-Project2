@@ -27,7 +27,7 @@ export class ToChar extends Expression {
         const value = this.value.getAST(methods)
         const ast = `${id} [label="ToCharArray"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast:ast}
     }

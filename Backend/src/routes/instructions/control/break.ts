@@ -17,7 +17,7 @@ export class Break extends Instruction{
 
     public getAST():Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label="Break"];\n`
+        const ast = `${id} [label="Break"]; `
         return {id: id, ast: ast}
     }
 }

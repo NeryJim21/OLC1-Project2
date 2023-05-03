@@ -7,7 +7,7 @@ export function getDOT(ast:any, methods:MethodTable, id:string){
         if(instruction instanceof Instruction){
             const aux = instruction.getAST(methods)
             dot += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
     }
     return dot

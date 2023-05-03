@@ -15,9 +15,9 @@ export class Parameters{
     public getAST():Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const id_type = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Identificador ${this.id}"];
         ${id_type} [label="${this.getType(this.type)}"];
-        ${id} -> ${id_type};\n`
+        ${id} -> ${id_type}; `
 
         return {id: id, ast: ast}
     }
@@ -37,10 +37,10 @@ export class Parameters{
                 return `Boolean`
             case ValueType.LIST:
                 if(this.type2) type2 = this.getType(this.type2)
-                return `Lista\\n${type2}`
+                return `Lista ${type2}`
             case ValueType.VECTOR:
                 if(this.type2) type2 = this.getType(this.type2)
-                return `Vector\\n${type2}`
+                return `Vector ${type2}`
             default:
                 return ``
         }

@@ -42,11 +42,11 @@ class PushList extends instruction_1.Instruction {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const id_id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.value.getAST(methods);
-        const ast = `${id} [label="Añadir a\\nLista"];
-        ${id_id} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Añadir a Lista"];
+        ${id_id} [label="Identificador ${this.id}"];
         ${id} -> ${id_id};
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
 }

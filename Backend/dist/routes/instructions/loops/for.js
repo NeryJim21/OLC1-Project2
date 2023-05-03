@@ -79,16 +79,16 @@ class For extends instruction_1.Instruction {
         ${condition.ast}
         ${id} -> ${condition.id};
         ${update.ast}
-        ${id} -> ${update.id};\n`;
+        ${id} -> ${update.id}; `;
         return { id: id, ast: ast };
     }
     getBody(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        let ast = `${id} [label="Cuerpo"];\n`;
+        let ast = `${id} [label="Cuerpo"]; `;
         for (var i in this.body) {
             const aux = this.body[i].getAST(methods);
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`;
+            ${id} -> ${aux.id}; `;
         }
         return { id: id, ast: ast };
     }

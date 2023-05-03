@@ -8,7 +8,7 @@ function getDOT(ast, methods, id) {
         if (instruction instanceof instruction_1.Instruction) {
             const aux = instruction.getAST(methods);
             dot += `${aux.ast}
-            ${id} -> ${aux.id};\n`;
+            ${id} -> ${aux.id}; `;
         }
     }
     return dot;

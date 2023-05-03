@@ -104,23 +104,23 @@ class Arithmetic extends expression_1.Expression {
         ${left.ast}
         ${id} -> ${left.id};
         ${right.ast}
-        ${id} -> ${right.id};\n`;
+        ${id} -> ${right.id}; `;
         return { id: id, ast: ast };
     }
     getOperation() {
         switch (this.type) {
             case ArithmeticType.SUM:
-                return `Suma\\n+`;
+                return `Suma +`;
             case ArithmeticType.SUBTRACCION:
-                return `Resta\\n-`;
+                return `Resta -`;
             case ArithmeticType.MULTIPLICATION:
-                return `Multiplicación\\n*`;
+                return `Multiplicación *`;
             case ArithmeticType.DIVISION:
-                return `División\\n/`;
+                return `División /`;
             case ArithmeticType.MODULE:
-                return `Módulo\\n%`;
+                return `Módulo %`;
             case ArithmeticType.POWER:
-                return `Potencia\\n^`;
+                return `Potencia ^`;
         }
     }
 }

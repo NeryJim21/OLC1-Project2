@@ -15,7 +15,7 @@ export class Continue extends Instruction{
 
     public getAST():Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        const ast = `${id} [label="Continue"];\n`
+        const ast = `${id} [label="Continue"]; `
         return {id: id, ast: ast}
     }
 }

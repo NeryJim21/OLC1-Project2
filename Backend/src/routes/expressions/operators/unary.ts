@@ -53,7 +53,7 @@ export class Unary extends Expression{
         const value = this.value.getAST(methods)
         const ast = `${id} [label="${this.getOperation()}"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast:ast}
     }
@@ -61,11 +61,11 @@ export class Unary extends Expression{
     private getOperation(){
         switch(this.type){
             case UnaryType.DECREMENT:
-                return `Decremento\\n--`
+                return `Decremento --`
             case UnaryType.INCREMENT:
-                return `Incremento\\n++`
+                return `Incremento ++`
             case UnaryType.NEGATION:
-                return `Negacion Unaria\\n-`
+                return `Negacion Unaria -`
         }
     }
 

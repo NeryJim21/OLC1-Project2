@@ -55,18 +55,18 @@ class AssingCrement extends instruction_1.Instruction {
         const aux2 = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.getType();
         const ast = `${id} [label="${value.type}"];
-        ${aux1} [label="Identificador\\n${this.id}"];
+        ${aux1} [label="Identificador ${this.id}"];
         ${id} -> ${aux1};
         ${aux2} [label="${value.sub}"];
-        ${id} -> ${aux2};\n`;
+        ${id} -> ${aux2}; `;
         return { id: id, ast: ast };
     }
     getType() {
         switch (this.type) {
             case AssigType.DECREMENT:
-                return { type: `DEC`, sub: `Decremento\\n--` };
+                return { type: `DEC`, sub: `Decremento --` };
             case AssigType.INCREMENT:
-                return { type: `INC`, sub: `Incremento\\n++` };
+                return { type: `INC`, sub: `Incremento ++` };
         }
     }
 }

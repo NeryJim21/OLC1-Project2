@@ -57,9 +57,9 @@ class Casting extends expression_1.Expression {
     getAST(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.value.getAST(methods);
-        const ast = `${id} [label="Casteo\\n${this.getType()}"];
+        const ast = `${id} [label="Casteo ${this.getType()}"];
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
     getType() {

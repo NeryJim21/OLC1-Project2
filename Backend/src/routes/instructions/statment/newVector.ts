@@ -86,22 +86,22 @@ export class NewVector extends Instruction {
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const aux = `n${uuidv4().replace(/\-/g, "")}`
         const value = this.getValue(methods)
-        const ast = `${id} [label="Declaracion\\nVector"];
-        ${aux} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Declaracion nVector"];
+        ${aux} [label="Identificador ${this.id}"];
         ${id} -> ${aux};
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
         
         return {id: id, ast: ast}
     }
 
     private getValue(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Valores"];\n`
+        let ast = `${id} [label="Valores"]; `
         if(this.value instanceof ToChar){
             const value = this.value.getAST(methods)
             ast += `${value.ast}
-            ${id} -> ${value.id};\n`
+            ${id} -> ${value.id}; `
             return {id: id, ast: ast}    
         }
         else if(this.value instanceof Expression){
@@ -111,7 +111,7 @@ export class NewVector extends Instruction {
             for(var i in this.value){
                 const aux = this.value[i].getAST(methods)
                 ast += `${aux.ast}
-                ${id} -> ${aux.id};\n`
+                ${id} -> ${aux.id}; `
             }
             return {id: id, ast: ast}
         }

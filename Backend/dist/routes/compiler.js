@@ -33,16 +33,16 @@ function run(input) {
 exports.run = run;
 function getDot() {
     const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-    let dot = `node [shape=box];\n
+    let dot = `node [shape=box]; 
     ${id} [label="AST"];
     ${(0, dot_1.getDOT)(ast, methods, id)}`;
     if (main.length === 1) {
         const value = main[0].getAST(methods);
         const id_main = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        dot += `${id_main} [label="Start With"];
+        dot += `${id_main} [label="MAIN"];
         ${id} -> ${id_main}
         ${id_main} -> ${value.id};
-        ${value.ast}\n`;
+        ${value.ast} `;
         return `digraph G { ${dot} }`;
     }
     return `digraph G { ${dot} }`;

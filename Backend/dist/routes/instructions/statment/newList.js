@@ -56,9 +56,9 @@ class NewList extends instruction_1.Instruction {
     getAST(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const aux = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        const ast = `${id} [label="Declaracion\\nLista"];
-        ${aux} [label="Identificador\\n${this.id}"];
-        ${id} -> ${aux};\n`;
+        const ast = `${id} [label="Declaracion Lista"];
+        ${aux} [label="Identificador ${this.id}"];
+        ${id} -> ${aux}; `;
         return { id: id, ast: ast };
     }
 }

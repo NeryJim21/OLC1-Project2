@@ -13,7 +13,7 @@ class Break extends instruction_1.Instruction {
     }
     getAST() {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        const ast = `${id} [label="Break"];\n`;
+        const ast = `${id} [label="Break"]; `;
         return { id: id, ast: ast };
     }
 }

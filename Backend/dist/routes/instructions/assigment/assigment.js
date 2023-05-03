@@ -38,11 +38,11 @@ class Assigment extends instruction_1.Instruction {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const aux = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.value.getAST(methods);
-        const ast = `${id} [label="Asignacion\\nVariable"];
-        ${aux} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Asignacion Variable"];
+        ${aux} [label="Identificador ${this.id}"];
         ${id} -> ${aux};
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
 }

@@ -33,7 +33,7 @@ export function run(input:any):any{
 
 export function getDot(){
     const id = `n${uuidv4().replace(/\-/g, "")}`
-    let dot = `node [shape=box];\n
+    let dot = `node [shape=box]; 
     ${id} [label="AST"];
     ${getDOT(ast, methods, id)}`
 
@@ -41,10 +41,10 @@ export function getDot(){
         const value = main[0].getAST(methods)
         const id_main = `n${uuidv4().replace(/\-/g, "")}`
 
-        dot += `${id_main} [label="Start With"];
+        dot += `${id_main} [label="MAIN"];
         ${id} -> ${id_main}
         ${id_main} -> ${value.id};
-        ${value.ast}\n`
+        ${value.ast} `
 
         return `digraph G { ${dot} }`
     }

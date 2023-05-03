@@ -64,13 +64,13 @@ export class AssigVector extends Instruction{
         const index = this.getIndex(methods)
         const value = this.value.getAST(methods)
         
-        const ast = `${id} [label="Asignacion\\nVector"];
-        ${id_id} [label="Identificador\\n${this.id}[]"];
+        const ast = `${id} [label="Asignacion Vector"];
+        ${id_id} [label="Identificador ${this.id}[]"];
         ${id} -> ${id_id};
         ${index.ast}
         ${id} -> ${index.id};
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast: ast}
     }

@@ -13,7 +13,7 @@ class Continue extends instruction_1.Instruction {
     }
     getAST() {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        const ast = `${id} [label="Continue"];\n`;
+        const ast = `${id} [label="Continue"]; `;
         return { id: id, ast: ast };
     }
 }

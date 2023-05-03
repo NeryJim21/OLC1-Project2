@@ -22,11 +22,11 @@ export class Return extends Instruction{
 
     public getAST(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Return"];\n`
+        let ast = `${id} [label="Return"]; `
         if(this.value){
             const value = this.value.getAST(methods)
             ast += `${value.ast}
-            ${id} -> ${value.id};\n`
+            ${id} -> ${value.id}; `
         }
         return {id: id, ast: ast}
     }

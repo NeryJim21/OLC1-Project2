@@ -18,11 +18,11 @@ class Return extends instruction_1.Instruction {
     }
     getAST(methods) {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
-        let ast = `${id} [label="Return"];\n`;
+        let ast = `${id} [label="Return"]; `;
         if (this.value) {
             const value = this.value.getAST(methods);
             ast += `${value.ast}
-            ${id} -> ${value.id};\n`;
+            ${id} -> ${value.id}; `;
         }
         return { id: id, ast: ast };
     }

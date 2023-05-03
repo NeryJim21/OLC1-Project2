@@ -67,13 +67,13 @@ export class AssigList extends Instruction{
         const index = this.getIndex(methods)
         const value = this.value.getAST(methods)
         
-        const ast = `${id} [label="Asignacion\\nLista"];
-        ${id_id} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Asignacion Lista"];
+        ${id_id} [label="Identificador ${this.id}"];
         ${id} -> ${id_id};
         ${index.ast}
         ${id} -> ${index.id};
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast: ast}
     }

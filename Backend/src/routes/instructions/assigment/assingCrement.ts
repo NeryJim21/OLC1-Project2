@@ -65,10 +65,10 @@ export class AssingCrement extends Instruction{
         const aux2 = `n${uuidv4().replace(/\-/g, "")}`
         const value = this.getType()
         const ast = `${id} [label="${value.type}"];
-        ${aux1} [label="Identificador\\n${this.id}"];
+        ${aux1} [label="Identificador ${this.id}"];
         ${id} -> ${aux1};
         ${aux2} [label="${value.sub}"];
-        ${id} -> ${aux2};\n`
+        ${id} -> ${aux2}; `
 
         return {id: id, ast: ast}
     }
@@ -76,9 +76,9 @@ export class AssingCrement extends Instruction{
     private getType(){
         switch(this.type){
             case AssigType.DECREMENT:
-                return {type: `DEC`, sub: `Decremento\\n--`}
+                return {type: `DEC`, sub: `Decremento --`}
             case AssigType.INCREMENT:
-                return {type: `INC`, sub: `Incremento\\n++`}
+                return {type: `INC`, sub: `Incremento ++`}
         }
     }
 

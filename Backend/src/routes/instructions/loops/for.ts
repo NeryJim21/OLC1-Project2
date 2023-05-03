@@ -94,18 +94,18 @@ export class For extends Instruction {
         ${condition.ast}
         ${id} -> ${condition.id};
         ${update.ast}
-        ${id} -> ${update.id};\n`
+        ${id} -> ${update.id}; `
 
         return {id: id, ast: ast}
     }
 
     private getBody(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
-        let ast = `${id} [label="Cuerpo"];\n`
+        let ast = `${id} [label="Cuerpo"]; `
         for(var i in this.body){
             const aux = this.body[i].getAST(methods)
             ast += `${aux.ast}
-            ${id} -> ${aux.id};\n`
+            ${id} -> ${aux.id}; `
         }
         return {id: id, ast: ast}
     }

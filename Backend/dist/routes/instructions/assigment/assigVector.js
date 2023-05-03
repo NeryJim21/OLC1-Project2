@@ -52,13 +52,13 @@ class AssigVector extends instruction_1.Instruction {
         const id_id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const index = this.getIndex(methods);
         const value = this.value.getAST(methods);
-        const ast = `${id} [label="Asignacion\\nVector"];
-        ${id_id} [label="Identificador\\n${this.id}[]"];
+        const ast = `${id} [label="Asignacion Vector"];
+        ${id_id} [label="Identificador ${this.id}[]"];
         ${id} -> ${id_id};
         ${index.ast}
         ${id} -> ${index.id};
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
     getIndex(methods) {

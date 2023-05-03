@@ -39,11 +39,11 @@ class Statment extends instruction_1.Instruction {
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const aux = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = this.getValue(methods);
-        const ast = `${id} [label="Declaracion\\nVariable"];
-        ${aux} [label="Identificador\\n${this.id}"];
+        const ast = `${id} [label="Declaracion Variable"];
+        ${aux} [label="Identificador ${this.id}"];
         ${id} -> ${aux};
         ${value.ast}
-        ${id} -> ${value.id};\n`;
+        ${id} -> ${value.id}; `;
         return { id: id, ast: ast };
     }
     getValue(methods) {
@@ -52,7 +52,7 @@ class Statment extends instruction_1.Instruction {
         }
         const id = `n${(0, uuid_1.v4)().replace(/\-/g, "")}`;
         const value = (0, checks_1.defaultValue)(this.type);
-        const ast = `${id} [label="${this.getType(value.type)}\\n${value.value}"];\n`;
+        const ast = `${id} [label="${this.getType(value.type)} ${value.value}"]; `;
         return { id: id, ast: ast };
     }
     getType(type) {

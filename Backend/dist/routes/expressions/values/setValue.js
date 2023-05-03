@@ -23,7 +23,7 @@ class SetValue extends expression_1.Expression {
         if (this.type === type_1.ValueType.STRING || this.type === type_1.ValueType.CHAR) {
             value = this.value.replace(/\\n/g, "\n").replace(/\\t/g, "\t").replace(/\\'/g, "\'").replace(/\\\\/g, "\\").replace(/\\"/g, "\"");
         }
-        const ast = `${id} [label="${this.getType()}\\n${value}"];\n`;
+        const ast = `${id} [label="${this.getType()} ${value}"]; `;
         return { id: id, ast: ast };
     }
     getType() {

@@ -44,7 +44,7 @@ export class Ternary extends Expression {
         ${vtrue.ast}
         ${id} -> ${vtrue.id};
         ${vfalse.ast}
-        ${id} -> ${vfalse.id};\n`
+        ${id} -> ${vfalse.id}; `
 
         return {id: id, ast:ast}
     }
@@ -54,7 +54,7 @@ export class Ternary extends Expression {
         const condition = this.condition.getAST(methods)
         const ast = `${id} [lable="Condicion"];
         ${condition.ast}
-        ${id} -> ${condition.id};\n`
+        ${id} -> ${condition.id}; `
 
         return {id: id, ast:ast}
     }
@@ -62,9 +62,9 @@ export class Ternary extends Expression {
     private getTrue(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const vtrue = this.trueV.getAST(methods)
-        const ast = `${id} [label="Valor\\nVerdadero"];
+        const ast = `${id} [label="Valor Verdadero"];
         ${vtrue.ast}
-        ${id} -> ${vtrue.id};\n`
+        ${id} -> ${vtrue.id}; `
 
         return {id: id, ast:ast}
     }
@@ -72,9 +72,9 @@ export class Ternary extends Expression {
     private getFalse(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const vfalse = this.falseV.getAST(methods)
-        const ast = `${id} [label="Valor\\nFalso"];
+        const ast = `${id} [label="Valor Falso"];
         ${vfalse.ast}
-        ${id} -> ${vfalse.id};\n`
+        ${id} -> ${vfalse.id}; `
 
         return {id: id, ast:ast}
     }

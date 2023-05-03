@@ -72,9 +72,9 @@ export class Casting extends Expression {
     public getAST(methods:MethodTable):Node{
         const id = `n${uuidv4().replace(/\-/g, "")}`
         const value = this.value.getAST(methods)
-        const ast = `${id} [label="Casteo\\n${this.getType()}"];
+        const ast = `${id} [label="Casteo ${this.getType()}"];
         ${value.ast}
-        ${id} -> ${value.id};\n`
+        ${id} -> ${value.id}; `
 
         return {id: id, ast: ast}
     }
