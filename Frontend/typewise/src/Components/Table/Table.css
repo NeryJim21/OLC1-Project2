@@ -14,7 +14,7 @@
 
   th,
   td {
-    border: 5px solid #ffffff;
+    border: 5px solid #141b41;
     padding: 8px;
     text-align: left;
   }
@@ -34,9 +34,9 @@
   }
 
   th.asc {
-    border-bottom: 5px solid #e9dbc2;
+    border-bottom: 5px solid #fc9f00;
   }
   
   th.desc {
-    border-top: 5px solid #EBC7C7;
+    border-top: 5px solid #141b41;
   }
