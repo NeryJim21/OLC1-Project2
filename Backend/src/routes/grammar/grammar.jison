@@ -240,8 +240,7 @@ parameters:       parameters ',' type ID                                        
 
 localBody:        localBody local                                                               { $1.push($2); $$ = $1; }
                 | local                                                                         { $$ = [$1]; }
-                | error ';'                                                                     { output.setOutput(`-->Sintáctico, se esperaba: ${yytext} (${this._$.first_line}:${this._$.first_column}).`); 
-                                                                                                errors.add(new Error("Sintáctico", `Se esperaba: ${yytext}`, this._$.first_line, this._$.first_column)); }
+                
 ;
 
 local:            statment                                                                      { $$ = $1; }
@@ -251,6 +250,8 @@ local:            statment                                                      
                 | incremento ';'                                                                { $$ = $1; }
                 | control                                                                       { $$ = $1; }
                 | print ';'                                                                     { $$ = $1; }
+                | error ';'                                                                     { output.setOutput(`-->Sintáctico, se esperaba: ${yytext} (${this._$.first_line}:${this._$.first_column}).`); 
+                                                                                                errors.add(new Error("Sintáctico", `Se esperaba: ${yytext}`, this._$.first_line, this._$.first_column)); }
 ;
 
 statment:         type ID '=' expression ';'                                                     { $$ = new Statment($1, $2, $4, @1.first_line, @1.first_column); }
@@ -303,7 +304,7 @@ incremento:       ID '++'                                                       
                 | ID '--'                                                               { $$ = new Unary(UnaryType.DECREMENT, $1, @1.first_line, @1.first_column); }
 ;
 
-forcycle:         PR_FOR '(' assigmentFor expression ';' assigmentFor ')' '{' localBody '}'     { $$ = new For($3, $4, $6, $9, @1.first_line, @1.first_column); }
+forcycle:         PR_FOR '(' statmentFor expression ';' assigmentFor ')' '{' localBody '}'     { $$ = new For($3, $4, $6, $9, @1.first_line, @1.first_column); }
 ;
 
 statmentFor:      statment                                                                      { $$ = $1; }
@@ -353,8 +354,7 @@ ifcondition:      PR_IF '(' expression ')' '{' localBody '}'                    
                 | PR_IF '(' expression ')' '{' '}'                                              { $$ = new If($3, [], null, @1.first_line, @1.first_column); }
 ;
 
-function:         casting                                                                       { $$ = $1; }
-                | PR_TOCHARARRAY '(' expression ')'                                             { $$ = new ToChar($3, @1.first_line, @1.first_column); }
+function:         PR_TOCHARARRAY '(' expression ')'                                             { $$ = new ToChar($3, @1.first_line, @1.first_column); }
                 | PR_LENGTH '(' expression')'                                                   { $$ = new Length($3, @1.first_line, @1.first_column); }
                 | PR_TOLOWER '(' expression')'                                                  { $$ = new ToLower($3, @1.first_line, @1.first_column); }
                 | PR_TOUPPER '(' expression')'                                                  { $$ = new ToUpper($3, @1.first_line, @1.first_column); }
@@ -409,9 +409,9 @@ expression:       expression '+' expression                                     
                 | ternary                                                                       { $$ = $1; }
                 | incremento                                                                    { $$ = $1; }
                 | structures                                                                    { $$ = $1; }
-                | function                                                                      { $$ = $1; }
-                | callfunction                                                                  { $$ = $1; }
+                | function                                                                      { $$ = $1; }                
                 | valuetype                                                                     { $$ = $1; }
+                | callfunction                                                                     { $$ = $1; }
                 | casting                                                                       { $$ = $1; }
 ;
 
